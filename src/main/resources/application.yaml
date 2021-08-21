@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: demoservice
+server:
+  port: 9090
+management:
+  security:
+    enabled: false
+demoprops:
+  title: boyans test prop
+  author: boyan qian
+  date: 14-08-2021
+club:
+  continental: europa
+  centry: 21
+---
+spring:
+  profiles: dev
+  application:
+    name: demoservice
+server:
+  port: 9090

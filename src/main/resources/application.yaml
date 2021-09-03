@@ -3,6 +3,9 @@ spring:
     name: demoservice
 server:
   port: 9090
+logging:
+  file:
+    path: /Users/boyanqian/playground/spring
 management:
   security:
     enabled: false

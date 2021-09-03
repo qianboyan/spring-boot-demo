@@ -4,10 +4,15 @@ import com.springdemo.demoservice.configuration.ClubProperties;
 import com.springdemo.demoservice.model.Club;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +22,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/api/club")
@@ -24,6 +30,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class ClubServiceController {
   @Autowired
   ClubProperties myClubProperties;
+
+  @Autowired
+  RestTemplate restTemplate;
 
   private static Map<String, Club> clubMap = new HashMap<>();
   static {
@@ -64,6 +73,22 @@ public class ClubServiceController {
   @ApiOperation(value = "get properties from config props")
   public String getProps() {
     return myClubProperties.getContinental();
+  }
+
+  @GetMapping("/template/clubs")
+  public String getClubsUsingTemplate(){
+    HttpHeaders headers = new HttpHeaders();
+    headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+    HttpEntity <String> entity = new HttpEntity<String>(headers);
+    return restTemplate.exchange("http://localhost:9090/api/club/clubs", HttpMethod.GET, entity, String.class).getBody();
+  }
+
+  @PostMapping("/template/clubs")
+  public String postClubUsingTemplate(@RequestBody Club club){
+    HttpHeaders headers = new HttpHeaders();
+    headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+    HttpEntity<Club> entity = new HttpEntity<Club>(club, headers);
+    return restTemplate.exchange("http://localhost:8080/products", HttpMethod.POST, entity, String.class).getBody();
   }
 
 }

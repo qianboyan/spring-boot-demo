@@ -1,7 +1,7 @@
 package com.springdemo.demoservice;
 
-import com.springdemo.demoservice.controller.CityException;
-import com.springdemo.demoservice.controller.ClubException;
+import com.springdemo.demoservice.exception.CityException;
+import com.springdemo.demoservice.exception.ClubException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

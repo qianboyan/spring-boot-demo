@@ -1,6 +1,7 @@
 package com.springdemo.demoservice.controller;
 
 import com.springdemo.demoservice.configuration.ClubProperties;
+import com.springdemo.demoservice.exception.ClubException;
 import com.springdemo.demoservice.model.Club;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

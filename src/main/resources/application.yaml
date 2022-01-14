@@ -1,14 +1,24 @@
 spring:
   application:
     name: demoservice
+
 server:
   port: 9090
+  #port: 443
+  #ssl:
+    #key-store: keystore.p12
+    #key-store-password: springboot
+    #keyStoreType: PKCS12
+    #keyAlias: tomcat
+
 logging:
   file:
     path: /Users/boyanqian/playground/spring
+
 management:
   security:
     enabled: false
+
 demoprops:
   title: boyans test prop
   author: boyan qian
@@ -16,6 +26,7 @@ demoprops:
 club:
   continental: europa
   centry: 21
+
 ---
 spring:
   profiles: dev

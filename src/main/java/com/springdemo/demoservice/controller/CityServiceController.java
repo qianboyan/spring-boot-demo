@@ -1,5 +1,6 @@
 package com.springdemo.demoservice.controller;
 
+import com.springdemo.demoservice.exception.CityException;
 import com.springdemo.demoservice.model.City;
 import com.springdemo.demoservice.service.CityService;
 import io.swagger.annotations.Api;

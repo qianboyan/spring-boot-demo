@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,6 +40,7 @@ public class CityServiceController {
   }
 
   @RequestMapping(method = RequestMethod.GET, value = "/cities")
+  @CrossOrigin(origins = "http://localhost:63343")
   @ApiOperation(value = "list all cities we have", notes = "feel free to add new cities")
   public List<City> listAllCities() {
     return cityService.getAllCities();

@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>About me</title>
+    <title>Consume API with JS</title>
 </head>
 <script>
+fetch('https://api.github.com/')
+.then(response => response.json())
+.then(data => console.log(data));
+
 fetch('http://localhost:9090/api/city/cities')
 .then(response => response.json())
 .then(data => console.log(data));
+
 </script>
 <body>
-<p>some informations about me</p>
+<p id="content">try to consume rest api</p>
 </body>
 </html>
+

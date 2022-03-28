@@ -11,8 +11,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DemoFilter implements Filter {
-  @Override
-  public void destroy() {}
 
   @Override
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterchain)
